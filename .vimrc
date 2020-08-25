@@ -20,13 +20,13 @@ Plug 'tpope/vim-commentary'     " comment stuff out
 Plug 'tpope/vim-fugitive'       " Git goodies
 Plug 'vim-airline/vim-airline'  " statusline/tabline
 Plug 'preservim/nerdtree'       " directory tree
-Plug 'davidhalter/jedi-vim'     " autocompletion
 Plug 'morhetz/gruvbox'          " theme
 Plug 'dense-analysis/ale'       " linting
 Plug 'airblade/vim-gitgutter'   " in-file git diff
 Plug 'wakatime/vim-wakatime'    " https://wakatime.com
 Plug 'Chiel92/vim-autoformat'   " code formatting
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " intellisense
 
 " Language plugins
 Plug 'hashivim/vim-terraform'       " Terraform
@@ -137,10 +137,6 @@ autocmd FileType yaml let b:autoformat_autoindent=0
 " preservim/nerdtree
 let NERDTreeShowHidden=1
 
-" davidhalter/jedi-vim
-autocmd FileType python call jedi#configure_call_signatures()
-let g:jedi#show_call_signatures = "2"
-
 " Chiel92/vim-autoformat
 au BufWrite * :Autoformat
 
@@ -155,3 +151,10 @@ let g:ale_fix_on_save = 1
 " vim-airline/vim-airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'
+
+" neoclide/coc.nvim
+autocmd FileType python let b:coc_root_patterns = ['.git', '.env']
+
+" plasticboy/vim-markdown
+let g:vim_markdown_folding_style_pythonic = 1
+let g:vim_markdown_folding_level = 3
