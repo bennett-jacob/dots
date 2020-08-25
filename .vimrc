@@ -86,7 +86,7 @@ set sidescrolloff=5 " show 5 lines to the side as you're scrolling
 
 " Ruler
 let &colorcolumn='81,121'
-highlight ColorColumn ctermbg=0 guibg=0
+highlight ColorColumn ctermbg=0
 
 " Tab settings
 set tabstop=4       " width that a <TAB> character displays as
