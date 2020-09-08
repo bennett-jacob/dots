@@ -75,6 +75,11 @@ nnoremap <C-Right> :tabnext<CR>
 nnoremap <C-j> :tabprevious<CR>
 nnoremap <C-k> :tabnext<CR>
 
+" fold/unfold with space
+set foldmethod=indent
+nnoremap <space> za
+vnoremap <space> zf
+
 
 " ------------------------------------------------------------------------------
 " Appearance
@@ -99,7 +104,6 @@ autocmd FileType typescript setlocal ts=2 sts=2 sw=2
 autocmd FileType javascript setlocal ts=2 sts=2 sw=2
 autocmd FileType json setlocal ts=2 sts=2 sw=2
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType markdown setlocal ts=2 sts=2 sw=2
 
 
 " ------------------------------------------------------------------------------
