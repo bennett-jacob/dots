@@ -4,4 +4,4 @@
 # This is the installation script when installing this in VS Code devontainers.
 # ------------------------------------------------------------------------------
 
-cwd
+python $HOME/dotfiles/scripts/vscode-install/install.py
