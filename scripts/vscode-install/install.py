@@ -37,7 +37,8 @@ def install_config_files():
 
 def install_oh_my_bash():
     subprocess.run([
-        'bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"'
+        "bash",
+        '-c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"',
     ])
 
 
