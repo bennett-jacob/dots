@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 from shutil import copyfile
 
-home_dir = os.environ.get("HOME", "~")
+home_dir = Path(os.environ.get("HOME", "/root"))
 cwd = Path(__file__).parent.absolute()
 root_dir = cwd.parent.parent.absolute()
 
