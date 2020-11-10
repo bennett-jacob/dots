@@ -16,7 +16,7 @@ plugins=(
   bashmarks
 )
 
-source $OSH/oh-my-bash.sh
+[ -s "$OSH/oh-my-bash.sh" ] && source "$OSH/oh-my-bash.sh"
 
 # ------------------------------------------------------------------------------
 # Aliases
