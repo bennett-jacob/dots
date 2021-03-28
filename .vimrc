@@ -23,7 +23,6 @@ Plug 'preservim/nerdtree'       " directory tree
 Plug 'morhetz/gruvbox'          " theme
 Plug 'dense-analysis/ale'       " linting
 Plug 'airblade/vim-gitgutter'   " in-file git diff
-Plug 'wakatime/vim-wakatime'    " https://wakatime.com
 Plug 'Chiel92/vim-autoformat'   " code formatting
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " intellisense
