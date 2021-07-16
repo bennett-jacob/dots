@@ -1,4 +1,10 @@
 {
     "python.pythonPath": "/usr/local/bin/python3",
-    "python.formatting.provider": "yapf"
+    "python.formatting.provider": "yapf",
+    "python.autoComplete.extraPaths": [
+        "__pypackages__/3.9/lib"
+    ],
+    "python.analysis.extraPaths": [
+        "__pypackages__/3.9/lib"
+    ],
 }

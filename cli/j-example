@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+# @description - This is an example command
+# @param param_1 - The first parameter
+# @param param_2 - The second parameter
+
+echo "You have executed the example command!"
+echo "Here are the args you passed in: [$@]"

@@ -1,0 +1,133 @@
+#!/usr/bin/env python3
+# @description - Aliases and tools for working with docker-compose. If --file=<file> is not included, dc will try to find the correct docker-compose file.
+# @param command - The docker compose command to execute (run, up, down, etc.)
+# @param args... - All arguments to the docker compose command will be passed in
+# @param (--file=<file>) - OPTIONAL: If included, this docker-compose.yaml file will take precedence
+# @param (--project-name=<project-name>) - OPTIONAL: Override the default project name
+
+import os
+from pathlib import Path
+import subprocess
+import sys
+import traceback
+from typing import List
+
+# DEFAULT_DOCKER_COMPSE_PATHS are ordered by priority
+DEFAULT_DOCKER_COMPSE_PATHS = [
+    "docker-compose.yaml",
+    "docker-compose.yml",
+]
+
+
+class Color:
+    GREY = '\033[30m'
+    GREEN = '\033[92m'
+    YELLOW = '\033[93m'
+    RED = '\033[91m'
+    BOLD = '\033[1m'
+    RESET = '\033[0m'
+
+    @staticmethod
+    def bold(text: str) -> str:
+        return f"{Color.BOLD}{text}{Color.RESET}"
+
+    @staticmethod
+    def green(text: str) -> str:
+        return f"{Color.GREEN}{text}{Color.RESET}"
+
+    @staticmethod
+    def red(text: str) -> str:
+        return f"{Color.RED}{text}{Color.RESET}"
+
+    @staticmethod
+    def yellow(text: str) -> str:
+        return f"{Color.YELLOW}{text}{Color.RESET}"
+
+    @staticmethod
+    def grey(text: str) -> str:
+        return f"{Color.GREY}{text}{Color.RESET}"
+
+
+def get_docker_compose_file(file_path: str = None) -> Path:
+    chosen_file = None
+
+    if file_path:
+        if Path(file_path).is_file():
+            chosen_file = Path(file_path)
+        else:
+            print(f"The specified docker compose file was not found: {file_path}")
+            print("Falling back to default file paths...")
+            print()
+
+    for path in DEFAULT_DOCKER_COMPSE_PATHS:
+        if Path(path).is_file() and not chosen_file:
+            chosen_file = Path(path)
+
+    if not chosen_file:
+        print(Color.red("✗ No docker compose file found. Try specifying a valid one with `--file=<file>`"))
+
+    return chosen_file
+
+
+def docker_compose(file: Path, project_name: str, command: str, flags: List[str]):
+    print(
+        f"{Color.green('docker compose')} -f {file} -p {project_name} {Color.yellow(command + ' ' + ' '.join(flags))}"
+    )
+    print()
+
+    subprocess.run(
+        ["docker", "compose", "-f", str(file), "-p", project_name, command, *flags],
+        stdout=sys.stdout,
+        stderr=sys.stderr,
+    )
+
+
+def main():
+    args = sys.argv[1:]
+
+    if len(args) == 0:
+        print(Color.red("No docker compose command was specified. Doing nothing."))
+        sys.exit(0)
+
+    command = args.pop(0)
+
+    file_path = None
+    project_name = None
+
+    args_to_remove = []  # save here to remove after loop is complete
+
+    for arg in args:
+        if arg.startswith("--file="):
+            file_path = arg.lstrip("--file=")
+            args_to_remove.append(arg)
+        elif arg.startswith("--project-name="):
+            project_name = arg.lstrip("--project-name=")
+            args_to_remove.append(arg)
+
+    for arg in args_to_remove:
+        args.remove(arg)
+
+    compose_file = get_docker_compose_file(file_path)
+    if not compose_file:
+        return
+
+    cwd = Path(os.getcwd())
+    project_name = project_name if project_name else cwd.name
+
+    print(f"Using docker compose file: {Color.bold(compose_file)}")
+    print(f"Using project name:        {Color.bold(project_name)}")
+    print()
+
+    return docker_compose(
+        file=compose_file,
+        project_name=project_name,
+        command=command,
+        flags=args,
+    )
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("Okay, goodbye :)")
