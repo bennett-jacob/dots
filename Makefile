@@ -1,3 +1,5 @@
+install_all: install_cli install_dotfiles
+
 install_cli:
 	@echo "Installing CLI..."
 	cd cli && $(MAKE) install
