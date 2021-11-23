@@ -26,11 +26,11 @@ RPROMPT="%{$fg[red]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}"
 # ------------------------------------------------------------------------------
 # Aliases
 # ------------------------------------------------------------------------------
-alias l="ls -laph"
-alias gac="git add . && git commit"
 alias c="clear"
+alias dco="docker compose"
+alias gac="git add . && git commit"
+alias l="ls -laph"
 alias sourceme="source ~/.zshrc"
-alias dco="docker-compose"
 
 # load other aliases
 [ -s "$HOME/.zsh-alias" ] && source "$HOME/.zsh-alias"
