@@ -12,15 +12,9 @@ plugins=(
     # Autosuggestions for commands you've used previously
     # git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
     zsh-autosuggestions
-
-    # kubectl candy
-    # git clone https://github.com/superbrothers/zsh-kubectl-prompt.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-kubectl-prompt
-    zsh-kubectl-prompt
 )
 
 source $ZSH/oh-my-zsh.sh
-
-RPROMPT="%{$fg[red]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}"
 
 
 # ------------------------------------------------------------------------------
