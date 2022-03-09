@@ -20,8 +20,6 @@ source $ZSH/oh-my-zsh.sh
 # ------------------------------------------------------------------------------
 # Aliases
 # ------------------------------------------------------------------------------
-alias c="clear"
-alias dco="docker compose"
 alias gac="git add . && git commit"
 alias l="ls -laph"
 alias sourceme="source ~/.zshrc"
@@ -33,6 +31,3 @@ alias sourceme="source ~/.zshrc"
 # ------------------------------------------------------------------------------
 # Environment configurations
 # ------------------------------------------------------------------------------
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
