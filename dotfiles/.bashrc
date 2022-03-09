@@ -26,7 +26,7 @@ alias gac="git add . && git commit"
 alias sourceme="source ~/.bashrc"
 
 # load other aliases
-[ -s "$HOME/.bash-aliases" ] && source "$HOME/.bash-aliases"
+[ -s "$HOME/.bash-alias" ] && source "$HOME/.bash-alias"
 
 # ------------------------------------------------------------------------------
 # Environment configurations
