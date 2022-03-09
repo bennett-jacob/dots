@@ -23,16 +23,11 @@ plugins=(
 # ------------------------------------------------------------------------------
 alias l="ls -laph"
 alias gac="git add . && git commit"
-alias c="clear"
 alias sourceme="source ~/.bashrc"
-alias dco="docker-compose"
 
 # load other aliases
-[ -s "$HOME/.aliases" ] && source "$HOME/.aliases"
+[ -s "$HOME/.bash-aliases" ] && source "$HOME/.bash-aliases"
 
 # ------------------------------------------------------------------------------
 # Environment configurations
 # ------------------------------------------------------------------------------
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
