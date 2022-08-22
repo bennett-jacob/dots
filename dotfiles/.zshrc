@@ -24,9 +24,6 @@ alias gac="git add . && git commit"
 alias l="ls -laph"
 alias sourceme="source ~/.zshrc"
 
-# load other aliases
-[ -s "$HOME/.zsh-alias" ] && source "$HOME/.zsh-alias"
-
 
 # ------------------------------------------------------------------------------
 # Environment configurations
